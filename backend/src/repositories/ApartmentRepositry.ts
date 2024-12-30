@@ -33,7 +33,7 @@ export const findAllApartments = async (skip, take, keyword) => {
 export const findApartmentById = async (id) =>
   prismaClient.findUnique({
     where: {
-      id: Number(id),
+      id: id,
     },
   });
 

@@ -8,6 +8,7 @@ import axios from "axios";
 import { Apartment } from "@/types";
 
 const Apartments = () => {
+  //pagination theme
   const customTheme: FlowbitePaginationTheme = {
     base: "",
     layout: {
@@ -44,6 +45,7 @@ const Apartments = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const numberOfApartmentsPerLoad = 5;
 
+  //get all apartments handler
   const fetchApartments = async () => {
     try {
       setLoading(true);
@@ -61,6 +63,7 @@ const Apartments = () => {
     }
   };
 
+  //method that handles the total number that will be used by the pagination component
   const getNumberOfPages = () => {
     let pages = 0;
     if (numberOfApartments)
@@ -72,6 +75,7 @@ const Apartments = () => {
     fetchApartments();
   }, [offset, debouncedValue]);
 
+  //debouncing the search input value
   useEffect(() => {
     const handler = setTimeout(() => {
       setDebouncedValue(locationKeyword);
@@ -93,10 +97,11 @@ const Apartments = () => {
       </div>
       {loading && <Loading />}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {apartmentsData.length &&
-          apartmentsData.map((apartment) => (
-            <ApartmentCard apartment={apartment} key={apartment.id} />
-          ))}
+        {apartmentsData.length
+          ? apartmentsData.map((apartment) => (
+              <ApartmentCard apartment={apartment} key={apartment.id} />
+            ))
+          : "No Apartments to show "}
       </div>
       <div className="flex flex-row overflow-x-auto sm:justify-center">
         <Pagination

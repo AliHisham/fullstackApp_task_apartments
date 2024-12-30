@@ -20,7 +20,7 @@ export const getAllApartmentsHandler = async (req, res, next) => {
 
 export const getApartmentByIdHandler = async (req, res, next) => {
   try {
-    const id = req.params.id;
+    const id = +req.params.id;
 
     const apartment = await getApartmentById(id);
     res.status(200).json({ data: apartment });

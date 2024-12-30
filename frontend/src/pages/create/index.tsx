@@ -9,6 +9,8 @@ const CreatePage = () => {
   const [bedroomsNumber, setBedRoomsNumber] = useState(0);
   const [bathroomsNumber, setBathRoomsNumber] = useState(0);
   const [description, setDescription] = useState("");
+
+  //a method to handle trigger the post endpoint
   const handleFromSubmit = async () => {
     try {
       const response = await axios.post(
