@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon src/index.ts",
+    "build": "tsc",
+    "start": "prisma migrate dev && node dist/index.js",
+    "prisma:generate": "prisma generate"
   },
   "keywords": [],
   "author": "",
